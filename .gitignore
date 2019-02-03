@@ -1,0 +1,14 @@
+#Gradle
+.gradle
+
+#Intellij
+.idea
+*.iml
+*.ipr
+*.iws
+
+#Build folder
+build/
+
+#Because mac
+.DS_Store

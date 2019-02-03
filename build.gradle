@@ -1,0 +1,28 @@
+plugins {
+    id 'idea'
+    id 'java'
+    id 'war'
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+    maven {
+        url "https://oss.jfrog.org/artifactory/libs-release"
+    }
+}
+
+dependencies {
+    compile 'org.glassfish.jersey.bundles:jaxrs-ri:2.27'
+    compile 'javax.xml.bind:jaxb-api:2.3.0'
+    compile 'javax.activation:activation:1.1'
+    compile 'com.github.twitch4j:twitch4j:1.0.0-alpha.7'
+}
+
+war {
+    archiveName "RustledBot.war"
+}
+
+wrapper {
+    version '5.1.1'
+}
