@@ -12,3 +12,9 @@ build/
 
 #Because mac
 .DS_Store
+
+#env file for Docker
+.env
+
+#jenv
+.jenv

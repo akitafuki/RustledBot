@@ -1,6 +1,7 @@
 plugins {
     id 'idea'
     id 'java'
+    id 'jacoco'
     id 'war'
 }
 
@@ -16,7 +17,7 @@ dependencies {
     compile 'org.glassfish.jersey.bundles:jaxrs-ri:2.29.1'
     compile 'javax.xml.bind:jaxb-api:2.3.0'
     compile 'javax.activation:activation:1.1'
-    compile 'com.github.twitch4j:twitch4j:1.0.0-alpha.17'
+    compile 'com.github.twitch4j:twitch4j:1.0.0-alpha.18'
 }
 
 war {
