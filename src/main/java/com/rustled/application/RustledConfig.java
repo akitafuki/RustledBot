@@ -1,9 +1,13 @@
 package com.rustled.application;
 
+import org.glassfish.jersey.server.ResourceConfig;
+
 import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
 
-@ApplicationPath("rustled")
-public class RustledConfig extends Application {
-
+@ApplicationPath("/")
+public class RustledConfig extends ResourceConfig {
+    public RustledConfig() {
+        packages("com.rustled");
+        register(new RustledTwitchBinder());
+    }
 }

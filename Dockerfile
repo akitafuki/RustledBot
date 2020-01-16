@@ -1,4 +1,4 @@
-FROM gradle:5.1.1-jre11-slim as gradle-build
+FROM gradle:6.0.1-jdk13 as gradle-build
 
 WORKDIR /app
 
@@ -9,10 +9,12 @@ COPY src /app/src
 
 RUN gradle war --no-daemon --stacktrace
 
-FROM tomcat:9-jre11-slim
+FROM tomcat:9-jdk13-openjdk-oracle
 
 MAINTAINER akitafuki
 
-COPY --from=gradle-build /app/build/libs/RustledBot.war /usr/local/tomcat/webapps
+RUN rm -rf /usr/local/tomcat/webapps/*
+
+COPY --from=gradle-build /app/build/libs/ROOT.war /usr/local/tomcat/webapps
 
 CMD ["catalina.sh", "run"]

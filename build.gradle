@@ -13,16 +13,16 @@ repositories {
 }
 
 dependencies {
-    compile 'org.glassfish.jersey.bundles:jaxrs-ri:2.27'
+    compile 'org.glassfish.jersey.bundles:jaxrs-ri:2.29.1'
     compile 'javax.xml.bind:jaxb-api:2.3.0'
     compile 'javax.activation:activation:1.1'
-    compile 'com.github.twitch4j:twitch4j:1.0.0-alpha.7'
+    compile 'com.github.twitch4j:twitch4j:1.0.0-alpha.17'
 }
 
 war {
-    archiveName "RustledBot.war"
+    archiveName "ROOT.war"
 }
 
 wrapper {
-    version '5.1.1'
+    version '6.0.1'
 }
