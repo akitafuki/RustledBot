@@ -1,0 +1,8 @@
+version: 2.1
+jobs:
+  build:
+    docker:
+      - image: circleci/openjdk:openjdk-13-buster
+    steps:
+      - checkout
+      - run: ./gradlew test
