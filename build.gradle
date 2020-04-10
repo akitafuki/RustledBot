@@ -23,7 +23,7 @@ dependencies {
     compile 'javax.activation:activation:1.1.1'
     compile 'com.github.twitch4j:twitch4j:1.0.0-alpha.18'
 
-    testCompile 'org.junit.jupiter:junit-jupiter:5.6.1'
+    testCompile 'org.junit.jupiter:junit-jupiter:5.6.2'
     
     codacy 'com.codacy:codacy-coverage-reporter:7.1.0'
 }
