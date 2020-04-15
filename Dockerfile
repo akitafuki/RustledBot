@@ -1,4 +1,4 @@
-FROM gradle:6.2.2-jdk13 as gradle-build
+FROM gradle:6.3.0-jdk13 as gradle-build
 
 WORKDIR /app
 
