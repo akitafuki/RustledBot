@@ -9,6 +9,7 @@
 
 #Build folder
 build/
+bin/
 
 #Because mac
 .DS_Store
@@ -18,3 +19,8 @@ build/
 
 #jenv
 .jenv
+
+#vscode
+.project
+.settings
+.classpath

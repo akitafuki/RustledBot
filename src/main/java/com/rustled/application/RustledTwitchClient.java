@@ -1,10 +1,8 @@
 package com.rustled.application;
 
 import com.github.philippheuer.credentialmanager.domain.OAuth2Credential;
-import com.github.philippheuer.events4j.EventManager;
 import com.github.twitch4j.TwitchClient;
 import com.github.twitch4j.TwitchClientBuilder;
-import com.github.twitch4j.chat.events.channel.ChannelMessageEvent;
 
 import javax.inject.Singleton;
 
@@ -17,18 +15,10 @@ public class RustledTwitchClient {
     private TwitchClient twitchClient = buildclient();
 
     private TwitchClient buildclient() {
-        EventManager eventManager = new EventManager();
-        // Don't forget to refactor this.
-        eventManager.onEvent(ChannelMessageEvent.class).subscribe(event ->
-                {
-                    System.out.println("RAW: " + event.getMessage());
-                }
-        );
-
         OAuth2Credential credential = new OAuth2Credential("twitch", accessToken);
 
         com.github.twitch4j.TwitchClient twitchClient = TwitchClientBuilder.builder()
-                .withEventManager(eventManager)
+                .withEnableHelix(true)
                 .withEnableChat(true)
                 .withChatAccount(credential)
                 .build();

@@ -11,7 +11,7 @@ RUN gradle war --no-daemon --stacktrace
 
 FROM tomcat:9-jdk13-openjdk-oracle
 
-MAINTAINER akitafuki
+LABEL maintainer="akitafuki"
 
 RUN rm -rf /usr/local/tomcat/webapps/*
 
