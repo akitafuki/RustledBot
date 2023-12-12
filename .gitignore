@@ -19,8 +19,10 @@ bin/
 
 #jenv
 .jenv
+.java-version
 
 #vscode
+.vscode
 .project
 .settings
 .classpath

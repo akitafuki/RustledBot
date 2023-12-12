@@ -1,7 +1,7 @@
 plugins {
     id 'idea'
     id 'java'
-    id 'org.springframework.boot' version '3.1.3'
+    id 'org.springframework.boot' version '3.2.0'
     id 'io.spring.dependency-management' version '1.1.4'
     id 'jacoco'
     id 'war'
@@ -28,12 +28,12 @@ dependencies {
     //codacy 'com.codacy:codacy-coverage-reporter:7.1.0'
 }
 
-war {
-    archiveName "ROOT.war"
+bootWar {
+    archiveFileName = 'ROOT.war'
 }
 
 wrapper {
-    version '7.2'
+    version '8.5'
 }
 
 test {
@@ -43,11 +43,11 @@ test {
     }
 }
 
-jacocoTestReport {
-    reports {
-        xml.enabled true
-    }
-}
+//jacocoTestReport {
+//    reports {
+//        xml.enabled true
+//    }
+//}
 
 //task sendCoverageToCodacy(type: JavaExec, dependsOn: jacocoTestReport) {
 //    main = "com.codacy.CodacyCoverageReporter"
