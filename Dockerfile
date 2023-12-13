@@ -1,4 +1,4 @@
-FROM gradle:6.3.0-jdk13 as gradle-build
+FROM gradle:8.5.0-jdk21-alpine as gradle-build
 
 WORKDIR /app
 
@@ -7,9 +7,9 @@ USER root
 COPY build.gradle /app
 COPY src /app/src
 
-RUN gradle war --no-daemon --stacktrace
+RUN gradle bootWar --no-daemon --stacktrace
 
-FROM tomcat:9-jdk13-openjdk-oracle
+FROM tomcat:11.0-jdk21
 
 LABEL maintainer="akitafuki"
 
