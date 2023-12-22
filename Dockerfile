@@ -2,19 +2,17 @@ FROM gradle:8.5.0-jdk21-alpine as gradle-build
 
 WORKDIR /app
 
-USER root
-
 COPY build.gradle /app
 COPY src /app/src
 
-RUN gradle bootWar --no-daemon --stacktrace
+RUN gradle bootJar --no-daemon --stacktrace
+RUN mkdir -p build/dependency && (cd build/dependency; jar -xf ../libs/*.jar)
 
-FROM tomcat:11.0-jdk21
+FROM eclipse-temurin:21-alpine
 
-LABEL maintainer="akitafuki"
+ARG DEPENDENCY=/app/build/dependency
+COPY --from=gradle-build ${DEPENDENCY}/BOOT-INF/lib /app/lib
+COPY --from=gradle-build ${DEPENDENCY}/META-INF /app/META-INF
+COPY --from=gradle-build ${DEPENDENCY}/BOOT-INF/classes /app
 
-RUN rm -rf /usr/local/tomcat/webapps/*
-
-COPY --from=gradle-build /app/build/libs/ROOT.war /usr/local/tomcat/webapps
-
-CMD ["catalina.sh", "run"]
+ENTRYPOINT ["java","-cp","app:app/lib/*","com.rustled.RustledApplication"]
